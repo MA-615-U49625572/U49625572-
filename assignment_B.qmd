@@ -1,0 +1,1141 @@
+---
+title: "615-assignmentB"
+format: html
+editor: Shuxin Qian
+  markdown: 
+    wrap: 72
+---
+
+## Assignment B
+
+**Exercise 1**
+
+1.1 
+1.1a
+
+```{r}
+a_vec=seq(from=1, to=20,by=1 )
+print(a_vec)
+```
+
+1.1b
+
+```{r}
+b_vec=seq(from=20,to=1,by=-1)
+print(b_vec)
+```
+
+1.1c
+
+```{r}
+c_vec=c(a_vec,b_vec[2:length(b_vec)])
+print(c_vec)
+```
+
+1.1d
+
+```{r}
+tmp=c(4,6,3)
+print(tmp)
+```
+
+1.1e
+
+```{r}
+e_vec=rep(tmp,times=10)
+print(e_vec)
+print(sum(e_vec==4))
+```
+
+1.1f
+
+```{r}
+f_vec=c(e_vec,4)
+print(f_vec)
+print(table(f_vec))
+```
+
+1.1g
+
+```{r}
+g_vec=rep(tmp,times=c(10,20,30))
+print(g_vec)
+print(table(g_vec))
+```
+
+1.2
+
+```{r}
+tmp=seq(from=3,to=6,by=0.1)
+vec=exp(tmp)*cos(tmp)
+plot(tmp,vec) 
+```
+
+1.3 
+1.3.a
+
+```{r}
+tmp1=seq(from=3,to=36,by=3)
+tmp2=seq(from=1,to=34,by=3)
+vec=(0.1^tmp1)*(0.2^tmp2)
+print(vec)
+```
+
+1.3.b
+
+```{r}
+tmp1=seq(from=1,to=25,by=1)
+tmp2=2^tmp1
+vec=tmp2/tmp1
+print(vec)
+```
+
+1.4 
+1.4.a
+
+```{r}
+tmp<-10:100
+vec=tmp^3+4*tmp^2
+vec_sum=sum(vec)
+print(vec_sum)
+```
+
+1.4.b
+
+```{r}
+tmp=1:25
+vec=((2^tmp)/tmp)+((3^tmp)/(tmp^2))
+vec_sum=sum(vec)
+print(vec_sum)
+```
+
+1.5 
+1.5.a
+
+```{r}
+tmp=1:30
+vec=paste('label',tmp)
+print(vec)
+```
+
+1.5.b
+
+```{r}
+tmp=1:30
+vec=paste('fn',tmp,sep='')
+print(vec)
+```
+
+1.6
+
+```{r}
+set.seed(50)
+xVec <- sample(0:999, 250, replace=T)
+yVec <- sample(0:999, 250, replace=T)
+```
+
+1.6.a
+
+```{r}
+vec_a=yVec[2:length(yVec)]-xVec[1:(length(xVec)-1)]
+print(vec_a)
+```
+
+1.6.b
+
+```{r}
+tmpx=xVec[2:length(xVec)]
+tmpy=yVec[1:(length(yVec)-1)]
+vec_b=sin(tmpy)/cos(tmpx)
+print(vec_b)
+```
+
+1.6.c
+
+```{r}
+tmp1=xVec[1:(length(xVec)-2)]+xVec[2:(length(xVec)-1)]
+tmp2=xVec[2:(length(xVec)-1)]-xVec[3:length(xVec)]
+vec_c=tmp1+tmp2
+print(vec_c)
+```
+
+1.6.d
+
+```{r}
+tmpe=exp(-xVec[2:length(xVec)])
+tmp=xVec[1:(length(xVec)-1)]+10
+vec_d=tmpe/tmp
+vec_d_sum=sum(vec_d)
+print(vec_d_sum)
+```
+
+1.7 
+1.7a
+
+```{r}
+vec_a=xVec[xVec>600]
+print(vec_a)
+```
+
+1.7.b
+
+```{r}
+vec_ind=which(yVec>600)
+print(vec_ind)
+```
+
+1.7.c
+
+```{r}
+vec_ind=which(yVec>600)
+print(xVec[vec_ind])
+```
+
+1.7.d
+
+```{r}
+x_mean=mean(xVec)
+tmpx=abs(xVec-x_mean)
+vec_d=sqrt(tmpx)
+print(vec_d)
+```
+
+1.7.e
+
+```{r}
+y_max=max(yVec)
+tmp=abs(yVec-y_max)<=200
+y_sum=sum(tmp)
+print(y_sum)
+```
+
+1.7.f
+
+```{r}
+tmp=xVec%%2==0
+x_sum=sum(tmp)
+print(x_sum)
+```
+
+1.7.g
+
+```{r}
+vec_g <- xVec[order(yVec)]
+print(vec_g)
+```
+
+1.7.h
+
+```{r}
+y_ind=seq(from=1,to=250,by=3)
+vec_h=yVec[y_ind]
+print(vec_h)
+```
+
+1.8
+
+```{r}
+tmp1=seq(from=2,to=38,by=2)
+tmp2=seq(from=3,to=39,by=2)
+vec_8=cumprod(tmp1/tmp2)
+
+sum_8=sum(vec_8)+1
+print(sum_8)
+```
+
+**Exercise 2** 
+2.1
+
+```{r}
+max_A <- matrix(c(1, 1, 3,
+              5, 2, 6,
+              -2, -1, -3), 
+            nrow = 3, ncol = 3, byrow = TRUE)
+```
+
+2.1.a
+
+```{r}
+max_A_3=max_A%*%max_A%*%max_A
+print(max_A_3)
+max_zero=matrix(0,3,3)
+print(all(max_zero==max_A_3))
+  
+```
+
+2.1.b
+
+```{r}
+tmp_sum=max_A[,2]+max_A[,3]
+max_A_new=max_A
+max_A_new[,3]=tmp_sum
+print(max_A_new)
+```
+
+2.2
+
+```{r}
+max_B=matrix(c(10,-10,10),nrow=15,ncol=3,byrow=TRUE)
+print(max_B)
+max_BTB <- crossprod(max_B)
+print(max_BTB)
+```
+
+2.3
+
+```{r}
+mat_E <- matrix(0, nrow=6, ncol=6)
+print(mat_E)
+mat_row=row(mat_E)
+mat_col=col(mat_E)
+print(mat_row)
+print(mat_col)
+mat_tmp=(abs(mat_row-mat_col)==1)
+mat_3<-mat_E
+mat_3[mat_tmp]<-1
+print(mat_3)
+```
+
+2.4
+
+```{r}
+tmp1 <- 0:4
+tmp2 <- 0:4
+mat_4 <- outer(tmp1, tmp2, FUN = "+")
+print(mat_4)
+```
+
+2.5 
+2.5.a
+
+```{r}
+n<-5
+vec_n<-0:(n-1)
+mat_a<-outer(vec_n,vec_n,function(x,y)((x+y)%%n))
+print(vec_a)
+```
+
+2.5.b
+
+```{r}
+n<-10
+vec_n<-0:(n-1)
+mat_b<-outer(vec_n,vec_n,function(x,y)((x+y)%%n))
+print(vec_b)
+```
+
+2.5.c
+
+```{r}
+n<-9
+mat_c <- outer(0:(n-1), 0:(n-1), function(x, y) (x - y) %% n)
+print(mat_c)
+```
+
+2.6
+
+```{r}
+n<-5
+vec_n<-0:(n-1)
+mat_A<-outer(vec_n,vec_n,function(x,y)(abs((x-y))%%n)+1)
+vec_y <- c(7, -1, -3, 5, 17)
+print(mat_A)
+x_sol <- solve(mat_A, vec_y)
+print(x_sol)
+```
+
+2.7
+
+```{r}
+set.seed(75)
+aMat <- matrix( sample(10, size=60, replace=T), nr=6)
+
+```
+
+2.7.a
+
+```{r}
+A_sum<- rowSums(aMat > 4)
+print(A_sum)
+```
+
+2.7.b
+
+```{r}
+tmp<-rowSums(aMat==2)
+idx<-which(tmp==2)
+print(idx)
+```
+
+2.7.c
+
+```{r}
+vec_c1=matrix(ncol=2,nrow=0)
+vec_c2=matrix(ncol=2,nrow=0)
+tmp1<-colSums(aMat)
+res<-which(outer(tmp1,tmp1,function(x,y)(x+y>75)),arr.ind = TRUE)
+vec_c1 <- rbind(vec_c1, res)
+res_1<-res[res[,1]<res[,2],]
+vec_c2 <- rbind(vec_c2,res_1)
+print(vec_c1)
+print(vec_c2)
+```
+
+2.8 
+2.8.a
+
+```{r}
+tmp_a <- function() {
+  total <- 0
+  for (i in 1:20) {
+    for (j in 1:5) {
+      total <- total + (i^4) / (3 + j)
+    }
+  }
+  return(total)
+}
+
+print(tmp_a())
+```
+
+2.8.b
+
+```{r}
+tmp_b <- function() {
+  total <- 0
+  for (i in 1:20) {
+    for (j in 1:5) {
+      total <- total + (i^4) / (3 +(i*j))
+    }
+  }
+  return(total)
+}
+
+print(tmp_b())
+```
+
+2.8.c
+
+```{r}
+tmp_c <- function() {
+  total <- 0
+  for (i in 1:10) {
+    for (j in 1:i) {
+      total <- total +(i^4) / (3 +(i*j))
+    }
+  }
+  return(total)
+}
+
+print(tmp_c())
+```
+
+**Exercise 3** 
+3.1 
+3.1.a
+
+```{r}
+tmpFn1<-function(xVec){
+  n<-length(xVec)
+  tmp<-1:n
+  result<-xVec^tmp
+  return(result)
+}
+
+tmpFn2<-function(xVec){
+  n<-length(xVec)
+  tmp<-1:n
+  result<-(xVec^tmp)/tmp
+  return(result)
+}
+xVec<-c(1:5)
+vec_a<-tmpFn1(xVec)
+vec_b<-tmpFn2(xVec)
+print(vec_a)
+print(vec_b)
+```
+
+3.1.b
+
+```{r}
+tmpFn3<-function(x,n){
+  arr_n<-1:n
+  sum<-1+sum((x^arr_n)/arr_n)
+  return(sum)
+}
+x_b=2
+n_b=5
+print(tmpFn3(2,5))
+```
+
+3.2
+
+```{r}
+tmpFun<-function(xVec){
+  result<-(xVec[1:(length(xVec)-2)]
+           +xVec[2:(length(xVec)-1)]
+           +xVec[3:(length(xVec))])/3
+  return(result)
+}
+xVec<-c(1:5,6:1)
+print(tmpFun(xVec))
+```
+
+3.3
+
+```{r}
+tmpFn=function(xVec){
+  result <- rep(0, length(xVec))
+  result[xVec<0]<-(xVec[xVec<0]^2)+(2*xVec[xVec<0])+3
+  result[xVec>=0 & xVec<2]<-xVec[xVec>=0 & xVec<2]+3
+  result[xVec>=2]<-(xVec[xVec>=2]^2)+(4*xVec[xVec>=2])-7
+  return(result)
+}
+xVec<-seq(from=-3,to=3,by=0.05)
+yVec<-tmpFn(xVec)
+plot(xVec,yVec)
+```
+
+3.4
+
+```{r}
+tmpFn<-function(x_mat){
+  if (!is.matrix(x_mat)) stop('Input is not a matrix')
+  result<-x_mat
+  idx_mat<-result%%2!=0
+  result[idx_mat]<-result[idx_mat]*2
+  return(result)
+}
+x_mat<-matrix(c(1,1,3,5,2,6,-2,-1,-3), nrow=3, byrow=TRUE)
+print(tmpFn(x_mat))
+```
+
+3.5
+
+```{r}
+tmpFn_5<-function(n,k){
+  x=1:n
+  mat <- outer(x, x, function(x, y){
+    ifelse(x == y, k,
+           ifelse(abs(x - y) == 1, 1, 0))
+  })
+  return(mat)
+}
+n=5
+k=2
+print(tmpFn_5(n,k))
+```
+
+3.6
+
+```{r}
+quadrant <- function(alpha){
+  angle <- alpha %% 360
+  if (angle >= 0 && angle < 90){
+    return(1)
+  } else if (angle >= 90 && angle < 180){
+    return(2)
+  } else if (angle >= 180 && angle < 270){
+    return(3)
+  } else {
+    return(4)
+  }
+}
+
+print(quadrant(45))
+print(quadrant(135))
+print(quadrant(225))
+print(quadrant(315))
+print(quadrant(405))
+
+```
+
+3.7 
+3.7.a
+
+```{r}
+weekday <- function(day, month, year){
+  day <- as.integer(day)
+  month <- as.integer(month)
+  year <- as.integer(year)
+
+  y <- year %% 100
+  c <- year %/% 100
+  m <- (month + 9) %% 12 + 1
+  idx<-which(month<=2)
+  if(length(idx) > 0){
+    y[idx] <- (year[idx] - 1) %% 100
+    c[idx] <- (year[idx] - 1) %/% 100
+  }
+  
+  f <- (floor(2.6*m - 0.2) + day + y + (y %/% 4) + (c %/% 4) - 2*c) %% 7
+  f<-f+1
+  return(f)
+}
+weekday(1, 1, 2026)
+weekday(2, 1, 2026)
+weekday(3, 1, 2026)
+weekday(4, 1, 2026)
+weekday(5, 1, 2026)
+weekday(6, 1, 2026)
+```
+
+3.7.b
+
+```{r}
+#If input is vector, the function works.
+day<-c(1,2,3,4,5,6,7,8)
+month<-rep(9,time=8)
+year<-rep(2025,time=8)
+weekday(day,month,year)
+```
+
+3.8 
+3.8.a
+
+```{r}
+testLoop<-function(n){
+  if(n<4) stop('n must be larger than 3')
+  #browser()
+  x=rep(NA,n-1)
+  x[1]=1
+  x[2]=2
+  for(j in 3:(n-1)){
+    x[j]=x[j-1]+2/x[j-1]
+  }
+  return(x)
+}
+print(testLoop(5))
+
+```
+
+3.8.b
+
+```{r}
+testLoop2<-function(yVec){
+  yVec<-exp(yVec)
+  return(sum(yVec))
+}
+yVec<-1:10
+print(testLoop2(yVec))
+```
+
+3.9 
+3.9.a
+
+```{r}
+quadmap <- function(start, rho, niter) {
+  x <- rep(NA,niter)
+  x[1] <- start
+  for (k in 2:niter) {
+    x[k] <- rho * x[k-1] * (1 - x[k-1])
+  }
+  return(x)
+}
+tmp <- quadmap(start=0.01, rho=2, niter=20)
+plot(tmp,type="l")
+tmp <- quadmap(start=0.95, rho=2.99, niter=500)
+plot(tmp, type="l")
+plot(tmp[300:500], type="l")
+
+```
+
+3.9.b
+
+```{r}
+quadmap_iter <- function(start, rho) {
+  eps = 0.02
+  maxiter = 10000
+  x <- start
+  iter <- 1
+  while (TRUE) {
+    x_new <- rho * x * (1 - x)
+    if (abs(x_new - x) < eps || iter > maxiter) break
+    x <- x_new
+    iter <- iter + 1
+  }
+  return(iter)
+}
+print(quadmap_iter(0.95,2.99))
+
+```
+
+**Exercise 4** 
+4.1
+
+```{r}
+set.seed(50)
+xVec<-runif(9,1,5)
+yVec<-runif(9,1,5)
+
+```
+
+4.1.a
+
+```{r}
+tmpFn_outer <- function(xVec, yVec) {
+  if(length(xVec) == 0 || length(yVec) == 0) return(rep(0, length(xVec)))
+  mat <- outer(xVec, yVec, FUN = ">")
+  zVec <- rowSums(mat)
+  return(zVec)
+}
+print(tmpFn_outer(xVec,yVec))
+```
+
+4.1.b
+
+```{r}
+tmpFn_sapply <- function(xVec, yVec) {
+  if(length(xVec) == 0 || length(yVec) == 0) return(rep(0, length(xVec)))
+  zVec <- sapply(xVec, function(x) sum(yVec < x))
+  return(zVec)
+}
+print(tmpFn_sapply(xVec,yVec))
+```
+
+4.1.c
+
+```{r}
+tmpFn_vapply <- function(xVec, yVec) {
+  if(length(xVec) == 0 || length(yVec) == 0) return(rep(0, length(xVec)))
+  
+  zVec <- vapply(xVec, function(x) sum(yVec < x), integer(1))
+  return(zVec)
+}
+print(tmpFn_vapply(xVec,yVec))
+```
+
+4.1.d
+
+```{r}
+#If xVec is empty → return an integer vector of length 0. If yVec is empty → return a vector of 0 elements.
+xVec <- numeric(0)
+yVec <- runif(9,1,5)
+length(xVec)
+tmpFn_vapply(xVec, yVec)
+#xVec is empty
+xVec <- runif(9,1,5)
+yVec <- numeric(0)
+tmpFn_vapply(xVec, yVec)
+#  yVec is empty
+xVec<-matrix(xVec,3,3)
+yVec<-matrix(yVec,3,3)
+tmpFn_vapply(xVec, yVec)
+# if input is matrix, it returns NA
+```
+
+4.1.e
+
+```{r}
+xVec<-runif(1000,1,5)
+yVec<-runif(1200,2,4)
+ta<-system.time(tmpFn_outer(xVec,yVec))
+tb<-system.time(tmpFn_sapply(xVec,yVec))
+tc<-system.time(tmpFn_vapply(xVec,yVec))
+print(ta,digits=8)
+print(tb,digits=8)
+print(tc,digits=8)
+```
+
+4.2 
+4.2.a
+
+```{r}
+tmpFn <- function(matA) {
+  idx<-which(colSums(is.na(matA))==0)
+  results<-matA[, idx, drop = FALSE]
+  return(results)
+}
+matA <- matrix(c(1, 2, NA,
+                 4, 5,  6,
+                 7, NA, 9), 
+               nrow = 3, byrow = TRUE)
+print(tmpFn(matA))
+```
+
+4.2.b
+
+```{r}
+tmpFn <- function(matA) {
+  idx<-which(colSums(is.na(matA))==0)
+  idy<-which(rowSums(is.na(matA))==0)
+  results<-matA[idy, idx, drop = FALSE]
+  return(results)
+}
+matA <- matrix(c(1, 2, NA,
+                 4, 5,  6,
+                 7, NA, 9), 
+               nrow = 3, byrow = TRUE)
+print(tmpFn(matA))
+```
+
+4.3 
+4.3.a
+
+```{r}
+tmpFn <- function(u, v, xVec, yVec) {
+  n <- length(xVec)
+  if (n != length(yVec) || n == 0) stop("xVec and yVec must have same non-zero length")
+  r <- rank(xVec)
+  s <- rank(yVec)
+  ind <- (r / (n + 1) <= u) & (s / (n + 1) <= v)
+  
+  return(sum(ind)/n)
+}
+xVec <- runif(10,0,1)
+yVec <- runif(10,0,1)
+
+print(tmpFn(0.5, 0.5, xVec, yVec))
+
+```
+
+4.3.b
+
+```{r}
+tmpFn_1<-function(u,v,xVec,yVec){
+  n <- length(xVec)
+  if (n != length(yVec) || n == 0) stop("xVec and yVec must have same non-zero length")
+  if (length(u) != length(v)) stop("u and v must have same length")
+  r <- rank(xVec)
+  s <- rank(yVec)
+  res <- mapply(function(uk, vk) {
+    ind <- (r / (n + 1) <= uk) & (s / (n + 1) <= vk)
+    mean(ind)},u, v)
+  
+  return(res)
+}
+
+u <- runif(10,0,1)
+v <- runif(10,0,1)
+tmpFn_1(u, v, xVec, yVec)
+```
+
+4.4 
+4.4.a
+
+```{r}
+funA <- function(n) {
+  total <- 0
+  for (r in 1:n) {
+    for (s in 1:r) {
+      total <- total +(s^2)/(10+4*r^3) 
+    }
+  }
+  return(total)
+}
+
+system.time(funA(10000))
+```
+
+4.4.b
+
+```{r}
+funB <- function(n) {
+  rMat <- row(matrix(0, n, n))
+  sMat <- col(matrix(0, n, n))
+  mat <- ifelse(sMat <= rMat, (sMat^2)/(10+4*rMat^3), 0)
+  return(sum(mat))
+}
+
+system.time(funB(10000))
+```
+
+4.4.c
+
+```{r}
+funC <- function(n) {
+  r <- 1:n
+  s <- 1:n
+  mat <- outer(r, s, function(rr, ss) ifelse(ss <= rr, (ss^2)/(10+4*rr^3), 0))
+  return(sum(mat))
+}
+
+system.time(funC(10000))
+```
+
+4.4.d
+
+```{r}
+innerSum <- function(r) {
+  result<-sum(((1:r)^2)/(10+4*r^3))
+  return(result)
+}
+
+funD <- function(n) {
+  result<-sum(sapply(1:n, innerSum))
+  return(result)
+}
+funE<-function(n){
+  result<-sum(unlist(lapply(1:n, innerSum)))
+  return(result)
+}
+system.time(funD(10000))
+system.time(funE(10000))
+#funE is faster than funD, 
+```
+
+4.4.e
+
+```{r}
+singleTerm <- function(r, s) {
+  if (s <= r) (s^2)/(10+4*r^3) else 0
+}
+
+funF <- function(n) {
+  rVec <- rep(1:n, each = n)
+  sVec <- rep(1:n, times = n)
+  result<-sum(mapply(singleTerm, rVec, sVec))
+  return(result)
+}
+system.time(funA(5000))
+system.time(funB(5000))
+system.time(funC(5000))
+system.time(funD(5000))
+system.time(funE(5000))
+system.time(funF(5000))
+#funE and FunD is the fastest
+```
+
+4.6 
+4.6.a
+
+```{r}
+set.seed(50)
+rwalk <- function(n) {
+  steps <- sample(c(-1, 1), n, replace = TRUE, prob = c(0.5, 0.5))
+  S <- c(0, cumsum(steps))
+  return(S)
+}
+rwalk(10)
+```
+
+4.6.b
+
+```{r}
+rwalkPos <- function(n) {
+  walk <- rwalk(n)
+  segmentsAbove <- (walk[1:n] >= 0) & (walk[2:(n+1)] >= 0)
+  timeAbove <- sum(segmentsAbove)
+  return(timeAbove)
+}
+
+rwalkPos(6)
+```
+
+4.6.c
+
+```{r}
+rwalkPos1 <- function(nReps, n) {
+  res <- numeric(nReps)
+  for (i in 1:nReps) {
+    res[i] <- rwalkPos(n)
+  }
+  return(res)
+}
+
+rwalkPos2 <- function(nReps, n) {
+  res <- sapply(1:nReps, function(i) rwalkPos(n))
+  return(res)
+}
+system.time(rwalkPos1(1000, 100))
+system.time(rwalkPos2(1000, 100))
+```
+
+4.6.d 
+Not really. Each trajectory must be simulated and accumulated separately. A full single vectorized solution across all repetitions is generally not possible.
+
+**Exercise 5** 
+5.1 
+5.1.a
+```{r}
+library(TSstudio)
+tsEwma <- function(tsDat, m0 = 0, delta = 0.7) {
+  n <- length(tsDat)
+  mVals <- numeric(n)
+  mPrev <- m0
+  for (t in 1:n) {
+    e <- tsDat[t] - mPrev
+    mCurr <- mPrev + (1 - delta) * e
+    mVals[t] <- mCurr
+    mPrev <- mCurr
+  }
+  ts(mVals, start = start(tsDat), frequency = frequency(tsDat))
+  
+}
+set.seed(50)
+tmp<-ts(rnorm(4000),start = c(1960,3),frequency = 12)
+ts_info(tmp)
+cat(paste(rep('---',20), collapse = " "))
+result<-tsEwma(tmp)
+result<-round(result,digits = 3)
+head(result,n=40)
+cat(paste(rep('---',20), collapse = " "))
+ts_info(result)
+ts_plot(result)
+hist(result)
+sd(result)
+```
+
+5.1.b
+
+```{r}
+tsEwma2<-function(tsDat,m0=0,delta=0.7){
+  datVec <- as.numeric(tsDat)
+  n <- length(datVec)
+  m <- numeric(n)
+  mPrev <- m0
+  for (t in 1:n) {
+    e_t <- datVec[t] - mPrev
+    m[t] <- mPrev + (1 - delta) * e_t
+    mPrev <- m[t]
+  }
+  ts(m, start = start(tsDat), frequency = frequency(tsDat))
+}
+set.seed(50)
+tmp<-ts(rnorm(4000),start = c(1960,3),frequency = 12)
+system.time(tsEwma(tmp))
+system.time(tsEwma2(tmp))
+cat('the tsEwma() cost 0.09s, whereas the tsEwma2() cost 0.04. Therefore, looping a vector is faster than looping a time series.')
+```
+
+5.2 
+5.2.a
+
+```{r}
+myListFn <- function(n=10) {
+  xVec <- rnorm(n, mean = 0, sd = 1)
+  x_mean <- mean(xVec)
+  if (x_mean >= 0) {
+  yVec <- rexp(n, rate = 1 / x_mean)
+} else {
+  yVec <- -rexp(n, rate = 1 / (-x_mean))
+}
+  count <- sum(abs(yVec) > abs(xVec))
+  list(xVec = xVec, yVec = yVec, count = count)
+}
+set.seed(15)
+n<-10
+result <- myListFn(n)
+print(result)
+```
+
+5.2.b
+
+```{r}
+result1<-lapply( rep(10,4), myListFn )
+result2<-sapply( rep(10,4), myListFn )
+result3<-replicate(4, myListFn())
+result4<-replicate(4, myListFn(), simplify=F)
+result1
+result2
+result3
+result4
+myList <- lapply(1:1000, function(i) myListFn(10))
+```
+
+5.2.c
+
+```{r}
+yList <- lapply(myList, function(x) x$yVec)
+head(yList)
+```
+
+5.2.d
+
+```{r}
+y_mat <- sapply(myList, function(x) x$yVec)
+y_mat[,1:6]
+```
+
+5.2.e
+
+```{r}
+myList2 <- lapply(myList, function(x) x[c("xVec", "yVec")])
+str(myList2[[1]])
+```
+
+5.2.f
+
+```{r}
+idx <- sapply(myList, function(x) x$count > 2)
+myList3 <- myList[idx]
+myList3[[1]]
+```
+
+5.3 
+5.3.a
+
+```{r}
+x1<-sapply(myList,function(x) sum(x$xVec*1:10))
+y1<-sapply(myList,function(x) sum(x$yVec*1:10))
+z_vec<-x1/y1
+```
+
+5.3.b
+
+```{r}
+y_mat <- sapply(myList, function(x) x$yVec)
+x_mat <- sapply(myList, function(x) x$xVec)
+z_mat <- x_mat-y_mat
+z_mat[,1:5]
+```
+
+5.3.c
+
+```{r}
+x2 <- sapply(myList, function(x) x$xVec[2])
+y2 <- sapply(myList, function(x) x$yVec[2])
+n  <- sapply(myList, function(x) x$count)
+z1   <- sum((1:1000) * x2)
+z2 <- sum(n * y2)
+result <- z1 / z2
+result
+```
+
+5.4
+
+```{r}
+set.seed(123) 
+testArray <- array(sample(1:60, 60, replace=FALSE), dim=c(5,4,3))
+dim(testArray)
+```
+5.4.a
+```{r}
+testFn <- function(arr) {
+  d1 <- dim(arr)[1]
+  d2 <- dim(arr)[2]
+  d3 <- dim(arr)[3]
+  w <- arr 
+  z <- matrix(0, d2, d3)
+  for(j in 1:d2){
+    for(k in 1:d3){
+      col_vals <- arr[,j,k]
+      w[,j,k] <- col_vals - min(col_vals)
+      z[j,k] <- sum(col_vals) - max(col_vals)
+    }
+  }
+  return(list(w=w, z=z))
+}
+res <- testFn(testArray)
+str(res)
+```
+5.4.b
+```{r}
+testFn2 <- function(arr){
+  d2 <- dim(arr)[2]
+  d3 <- dim(arr)[3]
+  z <- matrix(0, d2, d3)
+  
+  for(j in 1:d2){
+    for(k in 1:d3){
+      z[j,k] <- sum(arr[,j,k])
+    }
+  }
+  
+  return(z)
+}
+res <- testFn2(testArray)
+str(res)
+```
+
+5.5
