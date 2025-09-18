@@ -1,7 +1,8 @@
 ---
 title: "615-assignmentB"
 format: html
-editor: Shuxin Qian
+author: 'Shuxin Qian'
+editor: 
   markdown: 
     wrap: 72
 ---
