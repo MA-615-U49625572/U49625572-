@@ -1,0 +1,54 @@
+---
+title: "MA615_919"
+format: html
+editor: visual
+---
+
+```{r}
+library(datasets)
+library(ggplot2)
+library(tibble)
+```
+
+```{r}
+data("USArrests")
+head(USArrests)
+cat('This data set contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. Also given is the percent of the population living in urban areas.')
+```
+
+```{r}
+plot(USArrests$Assault, USArrests$Murder,
+     main = "Base R: Murder vs Assault",
+     xlab = "Assault", ylab = "Murder",
+    col = "steelblue")
+fit=lm(Murder~Assault,data=USArrests)
+abline(fit)
+```
+
+Conclusion: The graph shows that Murder and Assault are positively correlated. This means that states with higher rates of assault tend to also have higher rates of murder.
+
+```{r}
+arrests <- tibble::rownames_to_column(USArrests, var = "State")
+
+ggplot(arrests, aes(x = UrbanPop, y = Assault)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm",color = "red") +
+  labs(title = "ggplot2: UrbanPop vs Assault",
+       x = "UrbanPop", 
+       y = "Murder (per 100,000)")
+
+ggplot(arrests, aes(x = UrbanPop, y = Murder)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", color = "red") +
+  labs(title = "UrbanPop vs Murder", 
+       x = "Urban Population (%)",
+       y = "Murder (per 100,000)")
+ggplot(arrests, aes(x = UrbanPop, y = Rape)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm",color = "red") +
+  labs(title = "UrbanPop vs Rape", 
+       x = "Urban Population (%)",
+       y = "Rape (per 100,000)")
+```
+
+Conclusion: From the scatter plot and linear regression analysis, it can be seen that the urbanization rate of each state in the United States is significantly positively correlated with the attack rate. Besides,there is almost no obvious linear relationship between the urbanization rate (UrbanPop) and the murder rate (Murder). The regression line is nearly horizontal, indicating that there is no direct positive correlation between the degree of urbanization and the number of murders. The urbanization rate and the rape rate show a significant positive correlation. The linear regression line has a clear upward trend, indicating that the higher the urbanization rate, the higher the incidence of rape cases.
