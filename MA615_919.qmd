@@ -17,25 +17,14 @@ cat('This data set contains statistics, in arrests per 100,000 residents for ass
 ```
 
 ```{r}
-plot(USArrests$Assault, USArrests$Murder,
-     main = "Base R: Murder vs Assault",
-     xlab = "Assault", ylab = "Murder",
-    col = "steelblue")
-fit=lm(Murder~Assault,data=USArrests)
-abline(fit)
-```
-
-Conclusion: The graph shows that Murder and Assault are positively correlated. This means that states with higher rates of assault tend to also have higher rates of murder.
-
-```{r}
 arrests <- tibble::rownames_to_column(USArrests, var = "State")
 
 ggplot(arrests, aes(x = UrbanPop, y = Assault)) +
   geom_point(size = 3) +
   geom_smooth(method = "lm",color = "red") +
   labs(title = "ggplot2: UrbanPop vs Assault",
-       x = "UrbanPop", 
-       y = "Murder (per 100,000)")
+       x = "Urban Population (%)", 
+       y = "Assault (per 100,000)")
 
 ggplot(arrests, aes(x = UrbanPop, y = Murder)) +
   geom_point(size = 3) +
@@ -44,7 +33,7 @@ ggplot(arrests, aes(x = UrbanPop, y = Murder)) +
        x = "Urban Population (%)",
        y = "Murder (per 100,000)")
 ggplot(arrests, aes(x = UrbanPop, y = Rape)) +
-  geom_point(size = 3) +
+  geom_point(size = 3) + 
   geom_smooth(method = "lm",color = "red") +
   labs(title = "UrbanPop vs Rape", 
        x = "Urban Population (%)",
